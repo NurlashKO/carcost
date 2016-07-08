@@ -9,18 +9,93 @@
         {% block title %}
         {% endblock %}
     </title>
-    
-    <link rel="stylesheet" href="{% static "css/main.css" %}">
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
     <link href='https://fonts.googleapis.com/css?family=Heebo:400,300|Raleway:500,400,300' rel='stylesheet' type='text/css'>
 
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>        
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>    
 
 </head>
 
 <body>
-    <h1> HELLO <h1>
+    <br><br><br><br>
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Узнай стоимость своей машины</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#">About</a>
+                    </li>
+                    <li>
+                        <a href="#">Services</a>
+                    </li>
+                    <li>
+                        <a href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+  <form role="form" method="POST">
+    {% csrf_token %}
+
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                {% if cost > 0 %}
+                    <h1> Примерная стоимость : </h1>
+                    <h3> {{ cost }} тг. </h3>
+                {% endif %}
+                <h1>Car Cost</h1>
+                <p class="lead">Выберите Марку:</p>
+                <select name="mark" class="">
+                    <option value="Toyota">Toyota</option>
+                    <option value="Nissan">Nissan</option>
+                    <option value="Audi">Audi</option>
+                    <option value="Mitsubishi">Mitsubishi</option>
+                    <option value="Mercedes-Benz">Mercedes-Benz</option>
+                </select>
+                <h1> </h1>
+                <p class="lead"> Введите название модели: </p>
+                <input name="model" type="text">
+
+                <h1> </h1>
+                <p class="lead"> Год выпуска: </p>
+                <input name="is_year" type="text">
+                <h1> </h1>
+                <button type="submit" class="btn btn-primary">Вычислить цену</button>
+
+            </div>
+        </div>
+        <!-- /.row -->
+  </form>
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery Version 1.11.1 -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
 
 </body>
 
